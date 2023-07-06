@@ -10,9 +10,11 @@ public:
 	int getLengthScore(const string& str) {
 		int gap = abs((int)answer.size() - (int)str.size());
 		int minSize = min(answer.size(), str.size());
-		int score = (minSize - gap) * 60 / minSize;
-		return score;
+
+		if (gap > minSize) return 0;
+		return (minSize - gap) * MAX_LEGNTH_SCORE / minSize;
 	}
 private:
 	string answer;
+	const int MAX_LEGNTH_SCORE = 60;
 };
