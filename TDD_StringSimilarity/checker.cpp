@@ -34,7 +34,7 @@ public:
 	}
 
 	int getAlphaScore(const string& str) {
-		int alphaCntInput[26] = {0};
+		int alphaCntInput[26] = { 0 };
 		int alphaCntAnswer[26] = { 0 };
 
 		countEachAlpha(str, alphaCntInput);

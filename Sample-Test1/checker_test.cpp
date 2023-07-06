@@ -8,6 +8,13 @@ TEST(SimilarityChecker, sameAlphabetAll) {
 	EXPECT_EQ(expected, actual);
 }
 
+TEST(SimilarityChecker, diffAlphabetAll) {
+	SimilarityChecker machine("BB");
+	int expected = 0;
+	int actual = machine.getAlphaScore("A");
+	EXPECT_EQ(expected, actual);
+}
+
 TEST(SimilarityChecker, sameAlphabetPartial) {
 	SimilarityChecker machine("AAE");
 	int expected = 20;
