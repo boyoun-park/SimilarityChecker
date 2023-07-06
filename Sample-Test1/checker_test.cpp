@@ -1,6 +1,9 @@
 #include "pch.h"
+#include "../TDD_StringSimilarity/checker.cpp"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
+TEST(SimilarityChecker, sameAlphabetAll) {
+	SimilarityChecker machine;
+	int expected = 40;
+	int actual = machine.getAlphaScore("DSA");
+	EXPECT_EQ(expected, actual);
 }
