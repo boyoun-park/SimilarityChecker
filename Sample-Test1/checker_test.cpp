@@ -17,3 +17,4 @@ TEST(SimilarityChecker, diffLengthOver2times) {
 	EXPECT_EQ(expected, actual);
 }
 
+
