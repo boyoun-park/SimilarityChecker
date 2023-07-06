@@ -17,4 +17,10 @@ TEST(SimilarityChecker, diffLengthOver2times) {
 	EXPECT_EQ(expected, actual);
 }
 
+TEST(SimilarityChecker, diffLengthLess2times) {
+	SimilarityChecker machine("BAA");
+	int expected = 20;
+	int actual = machine.getLengthScore("AAABB");
 
+	EXPECT_EQ(expected, actual);
+}
