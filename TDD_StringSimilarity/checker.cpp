@@ -8,26 +8,42 @@ public:
 		: answer(str) {
 	}
 
-	int getAlphaScore(const string& str) {
+	int getTotalCnt(int alphaCntInput[26], int alphaCntAnswer[26])
+	{
 		int totalCnt = 0;
+		for (int letter = 0; letter < 26; ++letter){
+			if (alphaCntInput[letter] || alphaCntAnswer[letter]) totalCnt++;
+		}
+		return totalCnt;
+	}
+
+	int getSameCnt(int alphaCntInput[26], int alphaCntAnswer[26])
+	{
 		int sameCnt = 0;
+		for (int letter = 0; letter < 26; ++letter){
+			if (alphaCntInput[letter] && alphaCntAnswer[letter]) sameCnt++;
+		}
+		return sameCnt;
+	}
+
+	void countEachAlpha(const string& str, int alphaCnt[26])
+	{
+		for (char letter : str) {
+			alphaCnt[letter - 'A']++;
+		}
+	}
+
+	int getAlphaScore(const string& str) {
 		int alphaCntInput[26] = {0};
 		int alphaCntAnswer[26] = { 0 };
 
-		for (int i = 0; i < str.length(); i++) {
-			alphaCntInput[str[i] - 'A']++;
-		}
-		for (int j = 0; j < answer.length(); j++) {
-			alphaCntAnswer[answer[j] - 'A']++;
-		}
+		countEachAlpha(str, alphaCntInput);
+		countEachAlpha(answer, alphaCntAnswer);
 
-		for (int i = 0; i < 26; ++i){
-			if (alphaCntInput[i] && alphaCntAnswer[i]) sameCnt++;
-			else if (alphaCntInput[i] || alphaCntAnswer[i]) totalCnt++;
-		}
-		totalCnt += sameCnt;
+		int totalCnt = getTotalCnt(alphaCntInput, alphaCntAnswer);
+		int sameCnt = getSameCnt(alphaCntInput, alphaCntAnswer);
 
-		return sameCnt*40/totalCnt;
+		return (sameCnt * 40)/totalCnt;
 	}
 private:
 	string answer;
